@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GeoHosting - Ultimate Gaming Infrastructure</title>
+
+    <!-- SITE BY BAKI ! -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- SITE BY BAKI ! -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'BPGArial';
+            src: url('bpg_arial_2009.ttf') format('truetype');
+        }
+
+        :root {
+            --bg-black: #000000;
+            --bg-dark: #08090a;
+            --primary: #ffffff;
+            --secondary: #8a8d98;
+            --accent-orange: #ff5722;
+            --accent-purple: #7c4dff;
+            --border: rgba(255, 255, 255, 0.08);
+            --card-bg: #111214;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--primary);
+            font-family: 'BPGArial', 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 32px;
+            }
+
+            nav {
+                padding: 20px 0;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            transition: right 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            right: 0;
+        }
+
+        .mobile-overlay .nav-link {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        .promo-section {
+            padding: 80px 0;
+            text-align: left;
+        }
+
+        .promo-section h2 {
+            font-size: 48px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .promo-section h1 {
+            font-family: 'Outfit', 'BPGArial', sans-serif;
+            font-size: 84px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        .info-hero {
+            padding: 80px 0;
+            background: var(--bg-black);
+        }
+
+        .hero-title {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .hero-box {
+            background: #08090a;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .hero-box h3 {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .hero-box p {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 14px;
+            color: var(--secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .hero-features-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-bar {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s;
+        }
+
+        .feature-bar:hover {
+            border-color: #333;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .feature-bar i {
+            color: #ff3b30;
+            font-size: 18px;
+        }
+
+        .feature-bar span {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 13px;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+        }
+
+        /* SITE BY BAKI ! */
+        .games-section {
+            padding: 100px 0;
+            background: var(--bg-dark);
+            border-radius: 60px 60px 0 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1100px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .games-section {
+                border-radius: 40px 40px 0 0;
+                padding: 60px 0;
+            }
+
+            .chat-section {
+                padding: 80px 0;
+            }
+
+            .chat-text h2 {
+                font-size: 36px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        .game-card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: #333;
+        }
+
+        .game-card-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-card-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .game-card-img img.logo-overlay {
+            position: relative;
+            z-index: 2;
+            width: 60%;
+            max-width: 150px;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+        }
+
+        .game-card-content {
+            padding: 24px;
+        }
+
+        .game-card-content h3 {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .game-card-content p {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .game-card-divider {
+            height: 1px;
+            background: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .game-card-footer {
+            display: none;
+        }
+
+        /* SITE BY BAKI ! */
+        .chat-section {
+            padding: 120px 0;
+            background: var(--bg-black);
+        }
+
+        .contact-card-wrapper {
+            background: #08090a;
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+        }
+
+        .contact-info {
+            position: relative;
+        }
+
+        .contact-info h2 {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .contact-info p {
+            font-family: 'BPGArial', sans-serif;
+            color: var(--secondary);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-method-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #0d0e10;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-decoration: none;
+            color: #fff;
+            transition: border-color 0.2s;
+        }
+
+        .contact-method-item:hover {
+            border-color: #333;
+        }
+
+        .contact-method-icon {
+            width: 44px;
+            height: 44px;
+            background: #111;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #0066ff;
+        }
+
+        .contact-method-icon i {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif;
+            font-weight: 900;
+        }
+
+        .fb-sub-actions {
+            margin-top: 5px;
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .sub-btn {
+            font-family: 'BPGArial', sans-serif;
+            background: #1a1a1a;
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .sub-btn:hover {
+            background: #222;
+            border-color: #444;
+        }
+
+        .chat-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .chat-form .full-width {
+            grid-column: span 2;
+        }
+
+        .chat-form input,
+        .chat-form textarea {
+            font-family: 'BPGArial', sans-serif;
+            background: #0d0e10;
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            width: 100%;
+        }
+
+        .chat-form input:focus,
+        .chat-form textarea:focus {
+            border-color: #444;
+        }
+
+        .chat-form button {
+            grid-column: span 2;
+            font-family: 'BPGArial', sans-serif;
+            background: #fff;
+            color: #000;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+            .contact-card-wrapper {
+                grid-template-columns: 1fr;
+                padding: 40px;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .chat-form {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-form .full-width,
+            .chat-form button {
+                grid-column: span 1;
+            }
+
+            .contact-info h2 {
+                font-size: 32px;
+            }
+        }
+
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+
+            .hero-layout,
+            .chat-layout {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+            .features-grid,
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-form {
+                width: 100%;
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav data-v="auth-01">
+            <div style="display: flex; align-items: center;">
+                <div class="logo">GEOHOSTING</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">მთავარი</a>
+                <a href="https://host.geohosting.xyz/" class="nav-link">პანელი</a>
+                <a href="https://discord.gg/ME4jTUgXAz" class="nav-link">დახმარება</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </nav>
+
+        <div class="mobile-overlay" id="mobileOverlay">
+            <a href="index.html" class="nav-link">მთავარი</a>
+            <a href="https://host.geohosting.xyz/" class="nav-link">პანელი</a>
+            <a href="https://discord.gg/ME4jTUgXAz" class="nav-link">დახმარება</a>
+        </div>
+
+
+
+
+    </div>
+
+    <section class="info-hero">
+        <div class="container">
+            <h2 class="hero-title" style="text-align: center;">ინფორმაცია</h2>
+            <div class="hero-grid">
+                <div class="hero-box">
+                    <h3>OVH Anti-DDoS Game დაცვა</h3>
+                    <p>ჩვენი ინფრასტრუქტურა აღჭურვილია OVH-ის უახლესი Anti-DDoS Game დაცვის სისტემით, რომელიც
+                        სპეციალურად გეიმინგ სერვერებისთვისაა ოპტიმიზირებული. ის ეფექტურად ბლოკავს ნებისმიერი სიმძლავრის
+                        შეტევებს.</p>
+                    <p style="font-size: 12px; opacity: 0.7;">Anti-DDoS Game ტექნოლოგია უზრუნველყოფს UDP ტრაფიკის
+                        ჭკვიანურ ფილტრაციას, რაც გამორიცხავს თამაშის დროს პინგის მომატებას ან კავშირის გაწყვეტას.</p>
+                </div>
+                <div class="hero-features-column">
+                    <div class="hero-box" style="margin-bottom: 0;">
+                        <h3>რატომ ჩვენი ჰოსტინგი?</h3>
+                        <p>უმაღლესი ხარისხის დაცვა, 24/7 მხარდაჭერა და მინიმალური პინგი მთელ საქართველოში. ჩვენი
+                            სერვერები განთავსებულია საუკეთესო დატაცენტრებში. ჩვენი საიტი მოქმედებს 2018 წლიდან და დღემდე
+                            აქტიურია.</p>
+                    </div>
+
+                    <div class="feature-bar">
+                        <i class="fas fa-users"></i>
+                        <span>ჰოსტის მფლობელები — <strong style="color: #fff;">BOIKO, IODO</strong>. ჩვენი გუნდი მუდამ
+                            მზად არის დაგეხმაროთ ნებისმიერ ტექნიკურ საკითხში.</span>
+                    </div>
+
+                    <div class="feature-bar">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>დაცული სისტემები — თქვენი მონაცემები ყოველთვის დაცული და უსაფრთხოა GeoHosting-თან
+                            ერთად.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="games-section" data-v="auth-02">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>სერვისები</h2>
+            </div>
+            <div class="game-grid">
+                <a href="samp.html" class="game-card">
+                    <div class="game-card-img"
+                        style="background-image: url('https://wallpapercat.com/w/full/2/e/4/2151157-1920x1080-desktop-full-hd-gta-san-andreas-wallpaper.jpg');">
+                    </div>
+                    <div class="game-card-content">
+                        <h3>San Andreas Multiplayer</h3>
+                        <p>შექმენი შენი საკუთარი სერვერი San Andreas-ში!</p>
+                        <div class="game-card-divider"></div>
+                    </div>
+                </a>
+
+                <div class="game-card">
+                    <div class="game-card-img"
+                        style="background-image: url('https://img.freepik.com/premium-photo/minecraft-inspired-tornado-minecraft-texture-world-voxel-earth-surface_1057260-5142.jpg?semt=ais_hybrid&w=740&q=80');">
+                    </div>
+                    <div class="game-card-content">
+                        <h3>Minecraft Hosting</h3>
+                        <p>შექმენი შენი საკუთარი სამყარო მეგობრებთან ერთად!</p>
+                        <div class="game-card-divider"></div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-card-img"
+                        style="background-image: url('https://cdn.wallpapersafari.com/57/74/ytZwVC.jpeg');">
+                    </div>
+                    <div class="game-card-content">
+                        <h3>Counter-Strike</h3>
+                        <p>კლასიკური შუტერის სერვერების ჰოსტინგი ყველაზე დაბალი პინგით.</p>
+                        <div class="game-card-divider"></div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-card-img"
+                        style="background-image: url('https://www.webhostmost.com/_next/image?url=https://manager.webhostmost.com/uploads/main_whm_illustration_00bd731757.avif&w=1080&q=75');">
+                    </div>
+                    <div class="game-card-content">
+                        <h3>Web Hosting</h3>
+                        <p>სწრაფი და დაცული ჰოსტინგი თქვენი საიტისთვის.</p>
+                        <div class="game-card-divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="chat-section" data-x="hub-secure">
+        <div class="container">
+            <div class="contact-card-wrapper">
+                <div class="contact-info">
+                    <h2>დაგვიკავშირდით<br>სამართავად</h2>
+                    <p>ჩვენი გუნდი მზად არის დაგეხმაროთ ნებისმიერ დროს. აირჩიეთ თქვენთვის მოსახერხებელი გზა.</p>
+
+                    <div class="contact-methods">
+                        <a href="https://discord.gg/ME4jTUgXAz" target="_blank" class="contact-method-item">
+                            <div class="contact-method-icon"><i class="fab fa-discord"></i></div>
+                            <div>
+                                <div style="font-weight: 700;">Discord Support</div>
+                                <div
+                                    style="font-size: 13px; color: var(--secondary); font-family: 'BPGArial', sans-serif;">
+                                    შემოუერთდით ჩვენს სერვერს</div>
+                            </div>
+                        </a>
+                        <div class="contact-method-item"
+                            style="flex-direction: column; align-items: flex-start; cursor: default; gap: 15px;">
+                            <div style="display: flex; align-items: center; gap: 20px; width: 100%;">
+                                <div class="contact-method-icon"><i class="fab fa-facebook-f"></i></div>
+                                <div>
+                                    <div style="font-weight: 700;">Facebook Support</div>
+                                    <div
+                                        style="font-size: 13px; color: var(--secondary); font-family: 'BPGArial', sans-serif;">
+                                        მოგვწერეთ Facebook-ზე</div>
+                                </div>
+                                <div style="margin-left: auto; color: var(--secondary); opacity: 0.5;"><i
+                                        class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="fb-sub-actions">
+                                <a href="https://www.facebook.com/groups/geohosting" target="_blank" class="sub-btn">
+                                    <i class="fas fa-users"></i> Group
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=61587550676930" target="_blank"
+                                    class="sub-btn">
+                                    <i class="fas fa-flag"></i> Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="chat-form" id="contactForm">
+                    <input type="text" id="formPhone" placeholder="ნომერი" required>
+                    <input type="text" id="formDiscord" placeholder="დისქორდ სახელი" required>
+                    <input type="email" id="formEmail" placeholder="მეილი" class="full-width" required>
+                    <input type="text" id="formFB" placeholder="ფეისბუქი" class="full-width">
+                    <textarea id="formMessage" rows="4" placeholder="შეტყობინება" class="full-width"
+                        required></textarea>
+                    <button type="submit" id="submitBtn">შეტყობინების გაგზავნა</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <footer>
+            <div>© 2026 GeoHosting Infrastructure. All rights reserved.</div>
+            <div style="display: flex; gap: 20px;">
+                <span>Privacy Policy</span>
+                <span>Terms</span>
+            </div>
+            <div id="author-credit" data-id="baki-core"
+                style="color: #fff; font-size: 11px; font-family: 'BPGArial', sans-serif; opacity: 1;">
+                საიტი შექმნილია BAKI - ს მიერ!</div>
+        </footer>
+    </div>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileOverlay.classList.toggle('active');
+            if (mobileOverlay.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        const _0x4f2a = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ2ODc2MzY2MTc2OTM3OTk0My9mNWJrOEpaeDJXOHlKbVh4Q0VxMVhDVzJMM1pHdWhnVmFDQlJwODlwNEpDdXJpNDkyejlIVG9MNFIwVEpIYldZVU5fTw==';
+        const DISCORD_WEBHOOK_URL = atob(_0x4f2a);
+
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const phone = document.getElementById('formPhone').value;
+            const discord = document.getElementById('formDiscord').value;
+            const email = document.getElementById('formEmail').value;
+            const fb = document.getElementById('formFB').value;
+            const message = document.getElementById('formMessage').value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'იგზავნება...';
+
+            try {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        embeds: [{
+                            title: '📌 ახალი საკონტაქტო შეტყობინება',
+                            color: 0x0066ff,
+                            fields: [
+                                { name: '📱 ტელეფონი', value: phone || '---', inline: true },
+                                { name: '🎮 დისქორდი', value: discord || '---', inline: true },
+                                { name: '📧 მეილი', value: email || '---', inline: true },
+                                { name: '🌐 ფეისბუქი', value: fb || '---', inline: true },
+                                { name: '✉️ შეტყობინება', value: message || '---', inline: false }
+                            ],
+                            footer: { text: 'GeoHosting System' },
+                            timestamp: new Date().toISOString()
+                        }]
+                    })
+                });
+                if (response.ok) {
+                    alert('შეტყობინება წარმატებით გაიგზავნა!');
+                    contactForm.reset();
+                } else {
+                    alert('შეცდომა! გთხოვთ შეამოწმოთ Webhook ლინკი.');
+                }
+            } catch (error) {
+                alert('გაგზავნა ვერ მოხერხდა. სცადეთ მოგვიანებით.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'გაგზავნა';
+            }
+        });
+        document.querySelectorAll('.mobile-overlay .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileOverlay.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        (function () {
+            const AUTHOR_TEXT = 'საიტი შექმნილია BAKI - ს მიერ!';
+
+            const verifyIntegrity = () => {
+                const creditEl = document.getElementById('author-credit');
+                const navEl = document.querySelector('nav');
+                const gamesSec = document.querySelector('.games-section');
+                const chatSec = document.querySelector('.chat-section');
+
+                const showLockdown = () => {
+                    document.body.innerHTML = `
+                        <div style="background:#000;color:#fff;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif;text-align:center;padding:24px;">
+                            <h1 style="font-size:48px;margin-bottom:16px;color:#ff3b30;">SYSTEM LOCKDOWN</h1>
+                            <p style="font-size:18px;color:#888;">საიტი შექმნილია BAKI - ს მიერ! და ამის არ აღიარება არ შეიძლება!</p>
+                        </div>
+                    `;
+                    document.body.style.background = '#000';
+                    document.body.style.overflow = 'hidden';
+                };
+
+                // SITE BY BAKI !
+                if (!creditEl || creditEl.innerText.trim() !== AUTHOR_TEXT) showLockdown();
+                if (!navEl || navEl.getAttribute('data-v') !== 'auth-01') showLockdown();
+                if (!gamesSec || gamesSec.getAttribute('data-v') !== 'auth-02') showLockdown();
+                if (!chatSec || chatSec.getAttribute('data-x') !== 'hub-secure') showLockdown();
+            };
+
+            setInterval(verifyIntegrity, 1500);
+            window.addEventListener('load', verifyIntegrity);
+        })();
+    </script>
+</body>
+
+</html>

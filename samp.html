@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="ka">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GeoHosting - SAMP Host</title>
+    <link rel="icon" href="GeoHosting.png">
+
+    <!-- SITE BY BAKI ! -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- SITE BY BAKI ! -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'BPGArial';
+            src: url('bpg_arial_2009.ttf') format('truetype');
+        }
+
+        :root {
+            --bg-black: #000000;
+            --bg-dark: #08090a;
+            --primary: #ffffff;
+            --secondary: #8a8d98;
+            --accent: #0066ff;
+            --border: rgba(255, 255, 255, 0.08);
+            --card-bg: #111214;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--primary);
+            font-family: 'BPGArial', 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* SITE BY BAKI ! */
+        nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 32px;
+            }
+
+            nav {
+                padding: 20px 0;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        /* SITE BY BAKI ! */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', 'BPGArial', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* SITE BY BAKI ! */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* SITE BY BAKI ! */
+        .card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .samp-banner {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://wallpapercat.com/w/full/2/e/4/2151157-1920x1080-desktop-full-hd-gta-san-andreas-wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .samp-banner h2 {
+            font-size: 36px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .features-list {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: var(--secondary);
+        }
+
+        .feature-item i {
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        /* SITE BY BAKI ! */
+        .calculator-card {
+            background: #08090a;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .calc-title {
+            font-family: 'BPGArial', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .calc-title i {
+            color: var(--accent);
+        }
+
+        .slot-display {
+            text-align: center;
+            background: #0d0e10;
+            padding: 40px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .slot-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .slot-lbl {
+            color: var(--secondary);
+            font-size: 13px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* SITE BY BAKI ! */
+        .range-wrap {
+            margin: 10px 0;
+        }
+
+        input[type=range] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #1a1b1e;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+        }
+
+        .range-limits {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary);
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* SITE BY BAKI ! */
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .ctrl-btn {
+            background: #0d0e10;
+            border: 1px solid var(--border);
+            color: #fff;
+            height: 48px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .ctrl-btn:hover {
+            border-color: #444;
+            background: #121316;
+        }
+
+        /* SITE BY BAKI ! */
+        .summary {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .row.total {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .row-label {
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-val {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .total #totalPrice {
+            color: var(--accent);
+        }
+
+        .order-btn {
+            width: 100%;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* SITE BY BAKI ! */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" data-v="auth-02">
+        <nav data-v="auth-01">
+            <div style="display: flex; align-items: center;">
+                <a href="index.html" class="logo">GEOHOSTING</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">მთავარი</a>
+                <a href="https://host.geohosting.xyz/" class="nav-link">პანელი</a>
+                <a href="https://discord.gg/ME4jTUgXAz" class="nav-link">დახმარება</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <h1>SAMP HOSTING</h1>
+            <p>შეიძინეთ საუკეთესო ხარისხის ჰოსტინგი თქვენი სამპ სერვერისთვის GeoHosting-თან ერთად.</p>
+        </div>
+
+        <div class="main-grid" data-x="hub-secure">
+            <div class="card">
+                <div class="samp-banner">
+                    <h2>სტანდარტული პაკეტი</h2>
+                </div>
+                <p style="color: var(--secondary); line-height: 1.8; margin-bottom: 30px; font-size: 15px;">
+                    ჩვენი სამპ ჰოსტინგი გთავაზობთ სრულ კონტროლს თქვენს სერვერზე. მაღალი სიხშირის პროცესორები და
+                    მეხსიერება უზრუნველყოფს მინიმალურ ლაგს და მაქსიმალურ სტაბილურობას ნებისმიერი დატვირთვის დროს.
+                </p>
+                <div class="features-list">
+                    <div class="feature-item"><i class="fas fa-check-circle"></i> მყისიერი აქტივაცია</div>
+                    <div class="feature-item"><i class="fas fa-shield-alt"></i> Anti-DDoS Game</div>
+                    <div class="feature-item"><i class="fas fa-headset"></i> 24/7 მხარდაჭერა</div>
+                    <div class="feature-item"><i class="fas fa-database"></i> MySQL ბაზა</div>
+                    <div class="feature-item"><i class="fas fa-memory"></i> NVMe SSD მეხსიერება</div>
+                    <div class="feature-item"><i class="fas fa-folder-open"></i> FTP სრული წვდომა</div>
+                </div>
+            </div>
+
+            <div class="calculator-card">
+                <div class="calc-title"><i class="fas fa-sliders-h"></i> კონფიგურაცია</div>
+                <div class="slot-display">
+                    <div class="slot-val" id="slotCount">0</div>
+                    <div class="slot-lbl">მოთამაშის სლოტი</div>
+                </div>
+                <div class="range-wrap">
+                    <input id="slotRange" type="range" min="0" max="1000" value="0">
+                    <div class="range-limits">
+                        <span>0 SLOT</span>
+                        <span>1000 SLOT</span>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="ctrl-btn" id="dec">-1</button>
+                    <button class="ctrl-btn" id="inc">+1</button>
+                    <button class="ctrl-btn" id="dec10">-10</button>
+                    <button class="ctrl-btn" id="inc10">+10</button>
+                </div>
+                <div class="summary">
+                    <div class="row">
+                        <span class="row-label"><i class="fas fa-server"></i> Base Price</span>
+                        <span class="price-val">0.00 ₾</span>
+                    </div>
+                    <div class="row">
+                        <span class="row-label"><i class="fas fa-users"></i> Slots (<span
+                                id="slotCountInline">0</span>)</span>
+                        <span class="price-val" id="slotsCost">0.00 ₾</span>
+                    </div>
+                    <div class="row total">
+                        <span>ჯამში:</span>
+                        <span id="totalPrice">0.00 ₾</span>
+                    </div>
+                </div>
+                <button class="order-btn"
+                    onclick="window.open('https://www.kisa.ge/donate/r6FFpr3xASWTdfhZbcWy', '_blank')">
+                    გააგრძელე
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            <div>© 2026 GEOHOSTING. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="index.html">მთავარი</a>
+                <a href="https://discord.gg/ME4jTUgXAz" target="_blank">Discord</a>
+                <a href="https://www.facebook.com/groups/geohosting" target="_blank">Facebook</a>
+            </div>
+            <div id="author-credit" data-id="baki-core"
+                style="color: #fff; font-size: 11px; font-family: 'BPGArial', sans-serif;">საიტი შექმნილია BAKI - ს
+                მიერ!</div>
+        </footer>
+    </div>
+
+    <script>
+        const range = document.getElementById('slotRange');
+        const slotCount = document.getElementById('slotCount');
+        const slotCountInline = document.getElementById('slotCountInline');
+        const slotsCost = document.getElementById('slotsCost');
+        const totalPrice = document.getElementById('totalPrice');
+        const inc = document.getElementById('inc');
+        const dec = document.getElementById('dec');
+        const inc10 = document.getElementById('inc10');
+        const dec10 = document.getElementById('dec10');
+
+        const BASE_PRICE = 0.00;
+        const SLOT_PRICE = 0.10;
+
+        function updatePricing(val) {
+            let slots = parseInt(val);
+            if (isNaN(slots)) slots = 0;
+            slots = Math.max(0, Math.min(1000, slots));
+
+            range.value = slots;
+            slotCount.innerText = slots;
+            slotCountInline.innerText = slots;
+
+            const cost = (slots * SLOT_PRICE);
+            const total = (BASE_PRICE + cost);
+
+            slotsCost.innerText = cost.toFixed(2) + ' ₾';
+            totalPrice.innerText = total.toFixed(2) + ' ₾';
+
+            const percent = (slots / 1000) * 100;
+            range.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${percent}%, #1a1b1e ${percent}%, #1a1b1e 100%)`;
+        }
+
+        range.addEventListener('input', (e) => updatePricing(e.target.value));
+        inc.addEventListener('click', () => updatePricing(parseInt(range.value) + 1));
+        dec.addEventListener('click', () => updatePricing(parseInt(range.value) - 1));
+        inc10.addEventListener('click', () => updatePricing(parseInt(range.value) + 10));
+        dec10.addEventListener('click', () => updatePricing(parseInt(range.value) - 10));
+
+        updatePricing(0);
+
+        // SITE BY BAKI !
+        (function () {
+            const AUTHOR_TEXT = 'საიტი შექმნილია BAKI - ს მიერ!';
+
+            const verifyIntegrity = () => {
+                const creditEl = document.getElementById('author-credit');
+                const navEl = document.querySelector('nav');
+                const containerEl = document.querySelector('.container');
+                const gridEl = document.querySelector('.main-grid');
+
+                const showLockdown = () => {
+                    document.body.innerHTML = `
+                        <div style="background:#000;color:#fff;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif;text-align:center;padding:24px;">
+                            <h1 style="font-size:48px;margin-bottom:16px;color:#ff3b30;">SYSTEM LOCKDOWN</h1>
+                            <p style="font-size:18px;color:#888;">საიტი შექმნილია BAKI - ს მიერ! და ამის არ აღიარება არ შეიძლება!</p>
+                        </div>
+                    `;
+                    document.body.style.background = '#000';
+                    document.body.style.overflow = 'hidden';
+                };
+
+                // SITE BY BAKI !
+                if (!creditEl || creditEl.innerText.trim() !== AUTHOR_TEXT) showLockdown();
+                if (!navEl || navEl.getAttribute('data-v') !== 'auth-01') showLockdown();
+                if (!containerEl || containerEl.getAttribute('data-v') !== 'auth-02') showLockdown();
+                if (!gridEl || gridEl.getAttribute('data-x') !== 'hub-secure') showLockdown();
+            };
+
+            setInterval(verifyIntegrity, 1500);
+            window.addEventListener('load', verifyIntegrity);
+        })();
+    </script>
+</body>
+
+</html>
